@@ -1202,7 +1202,7 @@ class AbsoluteDG:
                     mdp = '{0}/em_l0.mdp'.format(self.mdpPath)
                     tpr = '{0}/tpr.tpr'.format(outPath)
                     mdout = '{0}/mdout.mdp'.format(outPath)
-                    gmx.grompp(f=mdp, c=waterPdb, p=outTop, o=tpr, maxwarn=-1, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose) 
+                    gmx.grompp(f=mdp, c=waterPdb, p=outTop, o=tpr, maxwarn=1000, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose) 
                     gmx.genion(s=tpr, p=outTop, o=ionsPdb, conc=self.conc, neutral=True, 
                           other_flags=' -pname {0} -nname {1}'.format(self.pname, self.nname), gmxexec=self.gmxexec, verbose=self.bVerbose)                    
                     
@@ -1239,7 +1239,7 @@ class AbsoluteDG:
                             mdp = '{0}/em_l1.mdp'.format(self.mdpPath)
                         tpr = '{0}/tpr.tpr'.format(outPath)
                         mdout = '{0}/mdout.mdp'.format(outPath)
-                        gmx.grompp(f=mdp, c=waterPdb, p=outTop, o=tpr, maxwarn=-1, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose)        
+                        gmx.grompp(f=mdp, c=waterPdb, p=outTop, o=tpr, maxwarn=1000, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose)        
                         gmx.genion(s=tpr, p=outTop, o=ionsPdb, conc=self.conc, neutral=True, other_flags=' -pname {0} -nname {1}'.format(self.pname, self.nname), gmxexec=self.gmxexec, verbose=self.bVerbose)                     
                     
                         # at the end of the file ii restraints need to be added
@@ -1261,7 +1261,7 @@ class AbsoluteDG:
 #        if ('transition' in simType) or ('ti' in simType):
 #            tpr = '{0}/ti{1}.tpr'.format(simpath,frNum)        
             
-        gmx.grompp(f=mdp, c=inStr, p=top, o=tpr, maxwarn=-1, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose)
+        gmx.grompp(f=mdp, c=inStr, p=top, o=tpr, maxwarn=1000, other_flags=' -po {0}'.format(mdout), gmxexec=self.gmxexec, verbose=self.bVerbose)
         clean_gromacs_backup_files(simpath)
         return tpr
         
